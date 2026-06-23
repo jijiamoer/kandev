@@ -3,6 +3,7 @@
 import { Button } from "@kandev/ui/button";
 import { IconMenu2, IconSearch } from "@tabler/icons-react";
 import { PageTopbar } from "@/components/page-topbar";
+import { TopbarMetrics } from "@/components/system-metrics/topbar-metrics";
 import { MobileMenuSheet } from "./mobile-menu-sheet";
 import { useAppStore } from "@/components/state-provider";
 
@@ -46,11 +47,18 @@ export function KanbanHeaderMobile({
       <PageTopbar
         title={title}
         subtitle={workspaceLabel}
-        backLabel={title === "Home" ? "" : "Kandev"}
+        backLabel="Kandev"
         className="h-10 px-3 py-1"
-        variant={title === "Home" ? "root" : "breadcrumb"}
+        variant="root"
+        leftActions={
+          title === "Home" ? null : (
+            <span className="truncate text-sm font-medium text-muted-foreground">{title}</span>
+          )
+        }
+        actionsClassName="gap-2"
         actions={
           <>
+            <TopbarMetrics />
             {onSearchChange && (
               <Button
                 variant={isSearchOpen ? "secondary" : "outline"}

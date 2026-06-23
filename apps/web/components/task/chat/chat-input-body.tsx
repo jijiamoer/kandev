@@ -337,7 +337,8 @@ export function ChatInputBody({
         <div
           ref={containerRef}
           style={{ height }}
-          className="flex flex-col min-h-0 overflow-hidden"
+          data-testid="chat-input-editor-shell"
+          className={cn("flex flex-col min-h-0 overflow-hidden", showFocusHint && "pr-28")}
         >
           <ChatInputEditorArea {...editorAreaProps} />
         </div>
